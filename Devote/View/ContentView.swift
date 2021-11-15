@@ -10,6 +10,12 @@ import CoreData
 
 struct ContentView: View {
 
+    @State private var task = ""
+
+    private var buttonDiabled: Bool {
+        task.isEmpty
+    }
+
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
@@ -19,23 +25,47 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+            VStack {
+                VStack(spacing: 16.0) {
+                    TextField("New Task", text: $task)
+                        .padding()
+                        .background(Color(UIColor.systemGray6))
+                        .cornerRadius(12)
+                    Button {
+                        addItem()
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Spacer()
+                        Text("SAVE")
+                        Spacer()
                     }
+                    .disabled(buttonDiabled)
+                    .padding()
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .background(buttonDiabled ? .gray : .pink)
+                    .cornerRadius(12.0)
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
+                .padding()
+
+                List {
+                    ForEach(items) { item in
+                        VStack(alignment: .leading) {
+                            Text(item.task ?? "")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                                .font(.footnote)
+                                .foregroundColor(Color.gray)
+                        }
+
+                    }
+                    .onDelete(perform: deleteItems)
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                .navigationTitle("Daily Task")
+                .navigationBarTitleDisplayMode(.large)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
                     }
                 }
             }
@@ -47,6 +77,9 @@ struct ContentView: View {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
+            newItem.task = task
+            newItem.completion = false
+            newItem.id = UUID()
 
             do {
                 try viewContext.save()
@@ -54,6 +87,9 @@ struct ContentView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+
+            task = ""
+            hideKeyboard()
         }
     }
 
