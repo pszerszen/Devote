@@ -13,6 +13,7 @@
 		75032BF527402992000EEDA4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75032BF427402992000EEDA4 /* Preview Assets.xcassets */; };
 		75032BF727402992000EEDA4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75032BF627402992000EEDA4 /* Persistence.swift */; };
 		75032BFA27402992000EEDA4 /* Devote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 75032BF827402992000EEDA4 /* Devote.xcdatamodeld */; };
+		86D9959927425A3F00099772 /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = 86D9959827425A3F00099772 /* Sound */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		75032BF427402992000EEDA4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		75032BF627402992000EEDA4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		75032BF927402992000EEDA4 /* Devote.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Devote.xcdatamodel; sourceTree = "<group>"; };
+		86D9959827425A3F00099772 /* Sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sound; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +57,11 @@
 		75032BEC2740298E000EEDA4 /* Devote */ = {
 			isa = PBXGroup;
 			children = (
-				75032BED2740298E000EEDA4 /* DevoteApp.swift */,
+				86D9959827425A3F00099772 /* Sound */,
 				75032BEF2740298E000EEDA4 /* ContentView.swift */,
-				75032BF127402992000EEDA4 /* Assets.xcassets */,
+				75032BED2740298E000EEDA4 /* DevoteApp.swift */,
 				75032BF627402992000EEDA4 /* Persistence.swift */,
+				75032BF127402992000EEDA4 /* Assets.xcassets */,
 				75032BF827402992000EEDA4 /* Devote.xcdatamodeld */,
 				75032BF327402992000EEDA4 /* Preview Content */,
 			);
@@ -131,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86D9959927425A3F00099772 /* Sound in Resources */,
 				75032BF527402992000EEDA4 /* Preview Assets.xcassets in Resources */,
 				75032BF227402992000EEDA4 /* Assets.xcassets in Resources */,
 			);
@@ -283,6 +287,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -312,6 +317,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
