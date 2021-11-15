@@ -16,6 +16,7 @@
 		8600462127429D0200371A1F /* sound-tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8600461E27429D0200371A1F /* sound-tap.mp3 */; };
 		8600462227429D0200371A1F /* sound-rise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8600461F27429D0200371A1F /* sound-rise.mp3 */; };
 		8600462327429D0200371A1F /* sound-ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8600462027429D0200371A1F /* sound-ding.mp3 */; };
+		860046292742A83200371A1F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860046282742A83200371A1F /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		8600461E27429D0200371A1F /* sound-tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-tap.mp3"; sourceTree = "<group>"; };
 		8600461F27429D0200371A1F /* sound-rise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-rise.mp3"; sourceTree = "<group>"; };
 		8600462027429D0200371A1F /* sound-ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-ding.mp3"; sourceTree = "<group>"; };
+		860046282742A83200371A1F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		86D9959A27425C4800099772 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 		8600461C27429CC900371A1F /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				860046282742A83200371A1F /* Constants.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				860046292742A83200371A1F /* Constants.swift in Sources */,
 				75032BF727402992000EEDA4 /* Persistence.swift in Sources */,
 				75032BF02740298E000EEDA4 /* ContentView.swift in Sources */,
 				75032BFA27402992000EEDA4 /* Devote.xcdatamodeld in Sources */,
