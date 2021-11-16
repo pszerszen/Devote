@@ -10,14 +10,9 @@ import CoreData
 
 struct ContentView: View {
 
-    @State private var task = ""
-
-    private var buttonDiabled: Bool {
-        task.isEmpty
-    }
+    @State private var showNewTaskItem = false
 
     @Environment(\.managedObjectContext) private var viewContext
-
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
@@ -26,28 +21,30 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                // MARK: - Main View
                 VStack {
-                    VStack(spacing: 16.0) {
-                        TextField("New Task", text: $task)
-                            .padding()
-                            .background(Color(UIColor.systemGray6))
-                            .cornerRadius(12)
-                        Button {
-                            addItem()
-                        } label: {
-                            Spacer()
-                            Text("SAVE")
-                            Spacer()
-                        }
-                        .disabled(buttonDiabled)
-                        .padding()
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .background(buttonDiabled ? .gray : .pink)
-                        .cornerRadius(12.0)
+                    // MARK: - Header
+                    Spacer(minLength: 80)
+                    // MARK: - New task button
+                    Button {
+                        showNewTaskItem = true
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 30, weight: .semibold, design: .rounded))
+                        Text("New Task")
+                            .font(.system(size: 30, weight: .bold, design: .rounded))
                     }
-                    .padding()
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 20.0)
+                    .padding(.vertical, 15.0)
+                    .background(LinearGradient(colors: [.pink, .blue],
+                                               startPoint: .leading,
+                                               endPoint: .trailing)
+                                    .clipShape(Capsule())
+                    )
+                    .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.25), radius: 8, x: 0.0, y: 4.0)
 
+                    // MARK: - Tasks
                     List {
                         ForEach(items) { item in
                             VStack(alignment: .leading) {
@@ -67,6 +64,17 @@ struct ContentView: View {
                     .padding(.vertical, 0.0)
                     .frame(maxWidth: 640)
                 }
+
+                // MARK: - New task
+                if showNewTaskItem {
+                    BlankView()
+                        .onTapGesture {
+                            withAnimation {
+                                showNewTaskItem = false
+                            }
+                        }
+                    NewTaskItemView(isShowing: $showNewTaskItem)
+                }
             }
             .onAppear(perform: {
                 UITableView.appearance().backgroundColor = UIColor.clear
@@ -83,26 +91,6 @@ struct ContentView: View {
             .background(BackgrondImageView())
             .background(backgroundGradient.ignoresSafeArea(.all))
             .navigationViewStyle(StackNavigationViewStyle())
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-            newItem.task = task
-            newItem.completion = false
-            newItem.id = UUID()
-
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-
-            task = ""
-            hideKeyboard()
         }
     }
 
