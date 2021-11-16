@@ -5,7 +5,7 @@
 //  Created by Piotr Szerszeń on 15/11/2021.
 //
 
-import Foundation
+import SwiftUI
 
 let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -13,3 +13,9 @@ let itemFormatter: DateFormatter = {
     formatter.timeStyle = .medium
     return formatter
 }()
+
+// MARK: - UI
+
+var backgroundGradient = LinearGradient(gradient: Gradient(colors: [.pink, .blue]),
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing)

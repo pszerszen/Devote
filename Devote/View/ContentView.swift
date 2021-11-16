@@ -25,51 +25,64 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                VStack(spacing: 16.0) {
-                    TextField("New Task", text: $task)
-                        .padding()
-                        .background(Color(UIColor.systemGray6))
-                        .cornerRadius(12)
-                    Button {
-                        addItem()
-                    } label: {
-                        Spacer()
-                        Text("SAVE")
-                        Spacer()
-                    }
-                    .disabled(buttonDiabled)
-                    .padding()
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .background(buttonDiabled ? .gray : .pink)
-                    .cornerRadius(12.0)
-                }
-                .padding()
-
-                List {
-                    ForEach(items) { item in
-                        VStack(alignment: .leading) {
-                            Text(item.task ?? "")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                                .font(.footnote)
-                                .foregroundColor(Color.gray)
+            ZStack {
+                VStack {
+                    VStack(spacing: 16.0) {
+                        TextField("New Task", text: $task)
+                            .padding()
+                            .background(Color(UIColor.systemGray6))
+                            .cornerRadius(12)
+                        Button {
+                            addItem()
+                        } label: {
+                            Spacer()
+                            Text("SAVE")
+                            Spacer()
                         }
+                        .disabled(buttonDiabled)
+                        .padding()
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .background(buttonDiabled ? .gray : .pink)
+                        .cornerRadius(12.0)
+                    }
+                    .padding()
 
+                    List {
+                        ForEach(items) { item in
+                            VStack(alignment: .leading) {
+                                Text(item.task ?? "")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                                    .font(.footnote)
+                                    .foregroundColor(Color.gray)
+                            }
+
+                        }
+                        .onDelete(perform: deleteItems)
                     }
-                    .onDelete(perform: deleteItems)
-                }
-                .navigationTitle("Daily Task")
-                .navigationBarTitleDisplayMode(.large)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
-                    }
+                    .listStyle(InsetGroupedListStyle())
+                    .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.3), radius: 12)
+                    .padding(.vertical, 0.0)
+                    .frame(maxWidth: 640)
                 }
             }
-            Text("Select an item")
+            .onAppear(perform: {
+                UITableView.appearance().backgroundColor = UIColor.clear
+            })
+            .navigationTitle("Daily Task")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+#if os(iOS)
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+#endif
+            }
+            .background(BackgrondImageView())
+            .background(backgroundGradient.ignoresSafeArea(.all))
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 
