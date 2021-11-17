@@ -85,10 +85,14 @@ struct ContentView: View {
                     .padding(.vertical, 0.0)
                     .frame(maxWidth: 640)
                 }
+                .blur(while: showNewTaskItem)
+                .transition(.move(edge: .bottom))
+                .animation(.easeOut(duration: 0.5), value: isDarkMode)
 
                 // MARK: - New task
                 if showNewTaskItem {
-                    BlankView()
+                    BlankView(backgroundColor: isDarkMode ? .black : .gray,
+                              backgroundOpacity: isDarkMode ? 0.3 : 0.5)
                         .onTapGesture {
                             withAnimation {
                                 showNewTaskItem = false
@@ -103,7 +107,8 @@ struct ContentView: View {
             .navigationTitle("Daily Task")
             .navigationBarTitleDisplayMode(.large)
             .navigationBarHidden(true)
-            .background(BackgrondImageView())
+            .background(BackgrondImageView()
+                            .blur(while: showNewTaskItem))
             .background(backgroundGradient.ignoresSafeArea(.all))
             .navigationViewStyle(StackNavigationViewStyle())
         }
@@ -123,6 +128,12 @@ struct ContentView: View {
     }
 }
 
+fileprivate extension View {
+
+    func blur(while shouldBlur: Bool) -> some View {
+        self.blur(radius: shouldBlur ? 8 : 0, opaque: false)
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
