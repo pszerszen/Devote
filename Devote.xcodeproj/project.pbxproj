@@ -29,6 +29,7 @@
 		8657BEE027450E8B009CA668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8657BEDF27450E8B009CA668 /* Assets.xcassets */; };
 		8657BEE427450E8B009CA668 /* DevoteWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8657BED627450E88009CA668 /* DevoteWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8657BEE9274518E8009CA668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75032BF127402992000EEDA4 /* Assets.xcassets */; };
+		8657BEEA274519B1009CA668 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860046282742A83200371A1F /* Constants.swift */; };
 		86AB7F062744E8B000B8E035 /* ListRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AB7F052744E8B000B8E035 /* ListRowItemView.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +78,7 @@
 		8657BED627450E88009CA668 /* DevoteWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DevoteWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8657BED827450E88009CA668 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8657BEDA27450E88009CA668 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		8657BEDD27450E88009CA668 /* DevoteWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevoteWidget.swift; sourceTree = "<group>"; };
+		8657BEDD27450E88009CA668 /* DevoteWidget.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = DevoteWidget.swift; sourceTree = "<group>"; tabWidth = 4; };
 		8657BEDF27450E8B009CA668 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8657BEE127450E8B009CA668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86AB7F052744E8B000B8E035 /* ListRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowItemView.swift; sourceTree = "<group>"; };
@@ -348,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8657BEDE27450E88009CA668 /* DevoteWidget.swift in Sources */,
+				8657BEEA274519B1009CA668 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

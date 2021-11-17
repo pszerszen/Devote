@@ -7,6 +7,7 @@
 
 import WidgetKit
 import SwiftUI
+import Devote
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
@@ -41,8 +42,48 @@ struct SimpleEntry: TimelineEntry {
 struct DevoteWidgetEntryView : View {
     var entry: Provider.Entry
 
+    @Environment(\.widgetFamily) var widgetFamily
+
+    private var logoSize: CGFloat {
+        return widgetFamily == .systemSmall ? 36 : 56
+    }
+
     var body: some View {
-        Text(entry.date, style: .time)
+        //        Text(entry.date, style: .time)
+        GeometryReader { geometry in
+            ZStack {
+                backgroundGradient
+
+                Image("rocket-small")
+                    .resizable()
+                    .scaledToFit()
+
+                Image("logo")
+                    .resizable()
+                    .frame(width: logoSize, height: logoSize)
+                    .offset(x: geometry.size.width / 2 - 20,
+                            y: geometry.size.height / (-2) + 20)
+                    .padding([.top, .trailing], widgetFamily == .systemSmall ? 12 : 32)
+
+                HStack {
+                    Text("Just Do It!")
+                        .font(widgetFamily == .systemSmall ? .footnote : .headline)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                        .padding(.horizontal, 12.0)
+                        .padding(.vertical, 4.0)
+                        .background(Color(red: 0, green: 0, blue: 0, opacity: 0.5)
+                                        .blendMode(.overlay))
+                    .clipShape(Capsule())
+
+                    if widgetFamily != .systemSmall {
+                        Spacer()
+                    }
+                }
+                .padding()
+                .offset(y: geometry.size.height / 2 - 24)
+            }
+        }
     }
 }
 
@@ -54,8 +95,8 @@ struct DevoteWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             DevoteWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Devote Launcher")
+        .description("This is an example widgetfor the personal task manager app.")
     }
 }
 
