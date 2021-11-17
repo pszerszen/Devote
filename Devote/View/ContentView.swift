@@ -10,6 +10,8 @@ import CoreData
 
 struct ContentView: View {
 
+    @AppStorage("isDarkMode") private var isDarkMode = false
+
     @State private var showNewTaskItem = false
 
     @Environment(\.managedObjectContext) private var viewContext
@@ -24,7 +26,34 @@ struct ContentView: View {
                 // MARK: - Main View
                 VStack {
                     // MARK: - Header
+                    HStack(spacing: 10.0) {
+                        Text("Devote")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                            .padding(.leading, 4.0)
+                        Spacer()
+
+                        EditButton()
+                            .font(.system(size: 16, weight: .semibold, design: .rounded))
+                            .padding(.horizontal, 10.0)
+                            .frame(minWidth: 70, minHeight: 24)
+                            .background(Capsule()
+                                            .stroke(Color.white, lineWidth: 2))
+
+                        Button {
+                            isDarkMode.toggle()
+                        } label: {
+                            Image(systemName: isDarkMode ? "moon.circle.fill" : "moon.circle")
+                                .resizable()
+                                .frame(width: 24.0, height: 24.0)
+                                .font(.title)
+                        }
+                    }
+                    .padding()
+                    .foregroundColor(.white)
+
                     Spacer(minLength: 80)
+
                     // MARK: - New task button
                     Button {
                         showNewTaskItem = true
@@ -81,13 +110,7 @@ struct ContentView: View {
             })
             .navigationTitle("Daily Task")
             .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-            }
+            .navigationBarHidden(true)
             .background(BackgrondImageView())
             .background(backgroundGradient.ignoresSafeArea(.all))
             .navigationViewStyle(StackNavigationViewStyle())
@@ -111,6 +134,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
