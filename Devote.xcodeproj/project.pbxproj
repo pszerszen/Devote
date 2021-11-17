@@ -22,6 +22,7 @@
 		8644461C2743FEB200E7F0DB /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8644461B2743FEB200E7F0DB /* BlankView.swift */; };
 		86498BFA2743A32500F42CF1 /* BackgrondImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86498BF92743A32400F42CF1 /* BackgrondImageView.swift */; };
 		8657BECF2744F49B009CA668 /* CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657BECE2744F49B009CA668 /* CheckboxStyle.swift */; };
+		8657BED127450713009CA668 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657BED027450713009CA668 /* SoundPlayer.swift */; };
 		86AB7F062744E8B000B8E035 /* ListRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AB7F052744E8B000B8E035 /* ListRowItemView.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		8644461B2743FEB200E7F0DB /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		86498BF92743A32400F42CF1 /* BackgrondImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgrondImageView.swift; sourceTree = "<group>"; };
 		8657BECE2744F49B009CA668 /* CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxStyle.swift; sourceTree = "<group>"; };
+		8657BED027450713009CA668 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		86AB7F052744E8B000B8E035 /* ListRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowItemView.swift; sourceTree = "<group>"; };
 		86D9959A27425C4800099772 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				860046282742A83200371A1F /* Constants.swift */,
+				8657BED027450713009CA668 /* SoundPlayer.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				75032BFA27402992000EEDA4 /* Devote.xcdatamodeld in Sources */,
 				75032BEE2740298E000EEDA4 /* DevoteApp.swift in Sources */,
 				8657BECF2744F49B009CA668 /* CheckboxStyle.swift in Sources */,
+				8657BED127450713009CA668 /* SoundPlayer.swift in Sources */,
 				8644461A2743F42200E7F0DB /* NewTaskItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

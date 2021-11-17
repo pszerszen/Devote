@@ -35,6 +35,7 @@ struct NewTaskItemView: View {
                     .cornerRadius(12)
                 Button {
                     addItem()
+                    SoundPlayer.shared.playSound(.ding)
                 } label: {
                     Spacer()
                     Text("SAVE")
@@ -42,6 +43,11 @@ struct NewTaskItemView: View {
                     Spacer()
                 }
                 .disabled(buttonDiabled)
+                .onTapGesture {
+                    if buttonDiabled {
+                        SoundPlayer.shared.playSound(.tap)
+                    }
+                }
                 .padding()
                 .foregroundColor(.white)
                 .background(buttonDiabled ? .blue : .pink)
