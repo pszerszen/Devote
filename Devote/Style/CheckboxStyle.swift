@@ -18,6 +18,7 @@ struct CheckboxStyle: ToggleStyle {
                     configuration.isOn.toggle()
 
                     SoundPlayer.shared.playSound(configuration.isOn ? .rise : .tap)
+                    feedback.notificationOccurred(.success)
                 }
             configuration.label
         }
